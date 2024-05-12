@@ -26,7 +26,7 @@ const BasicTable = () => {
     }
   );
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance;
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, footerGroups } = tableInstance;
 
   return (
     <table {...getTableProps()}>
@@ -67,6 +67,24 @@ const BasicTable = () => {
           );
         })}
       </tbody>
+      <tfoot>
+        {footerGroups.map((footerGroup) => {
+          const { key: footerGroupKey, ...footerGroupProps } = footerGroup.getFooterGroupProps();
+          return (
+            <tr key={footerGroupKey} {...footerGroupProps}>
+              {footerGroup.headers.map((column) => {
+                const { key: columnKey, ...footerProps } = column.getFooterProps();
+                return (
+                  <td key={columnKey} {...footerProps}>
+                    {column.render('Footer')}
+                  </td>
+                );
+              })}
+            </tr>
+          );
+        })}
+      </tfoot>
+
     </table>
   );
 
