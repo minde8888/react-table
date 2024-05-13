@@ -1,4 +1,6 @@
-import { Column } from "react-table";
+import React from "react";
+import { format } from "date-fns";
+import { CellProps, Column } from "react-table";
 
 interface Row {
   id: number;
@@ -31,6 +33,7 @@ export const COLUMNS: Column<Row>[] = [
     Header: "Date of Birth",
     Footer: "Date of Birth",
     accessor: "date_of_birth",
+    Cell: ({ value }: CellProps<Row, string>) => format(new Date(value), "dd/MM/yyyy"),
   },
   {
     Header: "Country",
@@ -46,7 +49,7 @@ export const COLUMNS: Column<Row>[] = [
 
 type GroupColumn = Column<Row> & {
   columns: Column<Row>[];
-}
+};
 
 type TableColumn = Column<Row> | GroupColumn;
 
