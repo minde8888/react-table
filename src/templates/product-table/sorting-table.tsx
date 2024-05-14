@@ -1,10 +1,8 @@
 import { useMemo } from 'react';
 import MOCK_DATA from '../../MOCK_DATA.json';
 import { GROUP_COLUMNS } from '../../components/columns/index';
-import { ColumnInstance, UseSortByColumnProps, UseTableHeaderGroupProps, useSortBy, useTable } from 'react-table';
+import { useSortBy, useTable } from 'react-table';
 import './table.css';
-
-export interface HeaderGroup<D extends object = {}> extends ColumnInstance<D>, UseTableHeaderGroupProps<D>, UseSortByColumnProps<D> {}
 
 const SortingTable = () => {
     const columns = useMemo(() => GROUP_COLUMNS, []);

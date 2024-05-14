@@ -6,14 +6,6 @@ import './table.css'
 
 
 const BasicTable = () => {
-  // const [showList, setShowList] = useState(true);
-  // const [numPages, setNumPages] = useState(0);
-
-  // const columns = useProductTableColumn({
-  //   setTileView: () => setShowList(false),
-  //   setListView: () => setShowList(true),
-  //   showList: showList,
-  // });
 
   const columns = useMemo(() => GROUP_COLUMNS, [])
   const date = useMemo(() => MOCK_DATA, [])
