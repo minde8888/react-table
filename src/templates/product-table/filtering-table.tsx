@@ -1,14 +1,14 @@
 import { useMemo } from 'react';
 import MOCK_DATA from '../../MOCK_DATA.json'
 import { COLUMNS, GROUP_COLUMNS } from '../../components/columns/index'
-import { useGlobalFilter, useTable } from 'react-table';
+import { useFilters, useGlobalFilter, useTable } from 'react-table';
 import './table.css'
 import { GlobalFilter } from './global-filter';
 
 
 const FilteringTable = () => {
 
-  const columns = useMemo(() => GROUP_COLUMNS, [])
+  const columns = useMemo(() => COLUMNS, [])
   const date = useMemo(() => MOCK_DATA, [])
 
   const tableInstance = useTable(
@@ -17,6 +17,7 @@ const FilteringTable = () => {
       data: date,
 
     },
+    useFilters,
     useGlobalFilter
   );
 
@@ -39,6 +40,7 @@ const FilteringTable = () => {
                   return (
                     <th key={headerKey} {...restHeaderProps}>
                       {column.render('Header')}
+                      <div>{column.canFilter ? column.render("Filter") : null}</div>
                     </th>
                   );
                 })}
