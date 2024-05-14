@@ -19,38 +19,40 @@ export const COLUMNS: Column<Row>[] = [
     Header: "Id",
     Footer: "Id",
     accessor: "id",
-    Filter: ColumnFilter
+    Filter: ColumnFilter,
   },
   {
     Header: "First Name",
     Footer: "First Name",
     accessor: "first_name",
-    Filter: ColumnFilter
+    Filter: ColumnFilter,
   },
   {
     Header: "Last Name",
     Footer: "Last Name",
     accessor: "last_name",
-    Filter: ColumnFilter
+    Filter: ColumnFilter,
   },
   {
     Header: "Date of Birth",
     Footer: "Date of Birth",
     accessor: "date_of_birth",
-    Cell: ({ value }: CellProps<Row, string>) => format(new Date(value), "dd/MM/yyyy"),
-    Filter: ColumnFilter
+    Cell: ({ value }: CellProps<Row, string>) =>
+      format(new Date(value), "dd/MM/yyyy"),
+    Filter: ColumnFilter,
+    disableFilters: true,
   },
   {
     Header: "Country",
     Footer: "Country",
     accessor: "country",
-    Filter: ColumnFilter
+    Filter: ColumnFilter,
   },
   {
     Header: "Phone",
     Footer: "Phone",
     accessor: "phone",
-    Filter: ColumnFilter
+    Filter: ColumnFilter,
   },
 ];
 
