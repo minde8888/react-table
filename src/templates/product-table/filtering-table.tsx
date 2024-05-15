@@ -4,6 +4,7 @@ import { COLUMNS, GROUP_COLUMNS } from '../../components/columns/index'
 import { useFilters, useGlobalFilter, useTable } from 'react-table';
 import './table.css'
 import { GlobalFilter } from './global-filter';
+import { ColumnFilter } from './column-filter';
 
 
 const FilteringTable = () => {
@@ -11,11 +12,17 @@ const FilteringTable = () => {
   const columns = useMemo(() => COLUMNS, [])
   const date = useMemo(() => MOCK_DATA, [])
 
+  const defaultColumn = useMemo(() => ({ Filter: ColumnFilter }), []);
+
+  console.log('====================================');
+  console.log(defaultColumn);
+  console.log('====================================');
+
   const tableInstance = useTable(
     {
-      columns: columns,
+      columns,
       data: date,
-
+      defaultColumn
     },
     useFilters,
     useGlobalFilter
