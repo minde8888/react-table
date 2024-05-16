@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import { CellProps, Column } from "react-table";
 import { ColumnFilter } from "../../templates/product-table/column-filter";
 
-interface Row {
+export interface Data {
   id: number;
   first_name: string;
   last_name: string;
@@ -14,7 +14,7 @@ interface Row {
   phone: string;
 }
 
-export const COLUMNS: Column<Row>[] = [
+export const COLUMNS: Column<Data>[] = [
   {
     Header: "Id",
     Footer: "Id",
@@ -34,7 +34,7 @@ export const COLUMNS: Column<Row>[] = [
     Header: "Date of Birth",
     Footer: "Date of Birth",
     accessor: "date_of_birth",
-    Cell: ({ value }: CellProps<Row, string>) =>
+    Cell: ({ value }: CellProps<Data, string>) =>
       format(new Date(value), "dd/MM/yyyy"),
 
     disableFilters: true,
@@ -51,11 +51,11 @@ export const COLUMNS: Column<Row>[] = [
   },
 ];
 
-type GroupColumn = Column<Row> & {
-  columns: Column<Row>[];
+type GroupColumn = Column<Data> & {
+  columns: Column<Data>[];
 };
 
-type TableColumn = Column<Row> | GroupColumn;
+type TableColumn = Column<Data> | GroupColumn;
 
 export const GROUP_COLUMNS: TableColumn[] = [
   { Header: "Id", Footer: "Id", accessor: "id" },
