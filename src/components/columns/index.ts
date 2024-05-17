@@ -14,21 +14,28 @@ export interface Data {
   phone: string;
 }
 
-export const COLUMNS: Column<Data>[] = [
+type CustomColumn<D extends object = {}> = Column<D> & {
+  sticky?: 'left' | 'right';
+};
+
+export const COLUMNS: CustomColumn<Data>[] = [
   {
     Header: "Id",
     Footer: "Id",
     accessor: "id",
+    sticky: 'left',
   },
   {
     Header: "First Name",
     Footer: "First Name",
     accessor: "first_name",
+    sticky:'left'
   },
   {
     Header: "Last Name",
     Footer: "Last Name",
     accessor: "last_name",
+    sticky:'left'
   },
   {
     Header: "Date of Birth",
@@ -48,6 +55,16 @@ export const COLUMNS: Column<Data>[] = [
     Header: "Phone",
     Footer: "Phone",
     accessor: "phone",
+  },
+  {
+    Header: "Age",
+    Footer: "Age",
+    accessor: "age",
+  },
+  {
+    Header: "Email",
+    Footer: "Email",
+    accessor: "email",
   },
 ];
 
