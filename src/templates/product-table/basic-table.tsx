@@ -7,7 +7,7 @@ import './table.css'
 
 const BasicTable = () => {
 
-  const columns = useMemo(() => GROUP_COLUMNS, [])
+  const columns = useMemo(() => COLUMNS, [])
   const date = useMemo(() => MOCK_DATA, [])
 
   const tableInstance = useTable(
@@ -76,7 +76,6 @@ const BasicTable = () => {
           );
         })}
       </tfoot>
-
     </table>
   );
 
